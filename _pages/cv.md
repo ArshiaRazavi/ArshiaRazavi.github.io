@@ -11,9 +11,8 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* M.SC. in Physics, University of Calgary, 2014
+* B.SC. in Physics, Sharif University of Technology, 2012
 
 Work experience
 ======
@@ -34,19 +33,10 @@ Work experience
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
+Programming
+  * Python, Matlab, C/C++, Java
+  * HTML, CSS, Javasript
+ 
 Talks
 ======
   <ul>{% for post in site.talks reversed %}
