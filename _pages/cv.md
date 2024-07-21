@@ -11,8 +11,8 @@ redirect_from:
 
 Education
 ======
-* M.SC. in Physics, University of Calgary, 2014
-* B.SC. in Physics, Sharif University of Technology, 2012
+* M.SC. in Physics, [University of Calgary](https:ucalgary.ca), 2022-Present
+* B.SC. in Physics, [Sharif University of Technology](https://en.sharif.edu), 2017-2022
 
 Work experience
 ======
