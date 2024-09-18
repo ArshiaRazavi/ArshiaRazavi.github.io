@@ -14,41 +14,72 @@ Education
 * M.SC. in Physics, [University of Calgary](https:ucalgary.ca), 2022-Present
 * B.SC. in Physics, [Sharif University of Technology](https://en.sharif.edu), 2017-2022
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+[//]: # (Work experience)
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+[//]: # (======)
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+[//]: # (* Spring 2024: Academic Pages Collaborator)
+
+[//]: # (  * Github University)
+
+[//]: # (  * Duties includes: Updates and improvements to template)
+
+[//]: # (  * Supervisor: The Users)
+
+[//]: # ()
+[//]: # (* Fall 2015: Research Assistant)
+
+[//]: # (  * Github University)
+
+[//]: # (  * Duties included: Merging pull requests)
+
+[//]: # (  * Supervisor: Professor Hub)
+
+[//]: # ()
+[//]: # (* Summer 2015: Research Assistant)
+
+[//]: # (  * Github University)
+
+[//]: # (  * Duties included: Tagging issues)
+
+[//]: # (  * Supervisor: Professor Git)
   
 Skills
 ======
 Programming
   * Python, Matlab, C/C++, Java
-  * HTML, CSS, Javasript
+
+
  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
+Honors
+=====
+Olympiad Competitions
+  * Silver Medal, National Olympiad of Astronomy and Astrophysics, Summer 2015, Tehran, Iran
+  * Gold Medal, National Physics Olympiad, Summer 2016, Tehran, Iran
+  * Silver Medal, International Physics Olympiad, Summer 2017, Yogyakarta, Indonesia
+
+[//]: # (Talks)
+
+[//]: # (======)
+
+[//]: # (  <ul>{% for post in site.talks reversed %})
+
+[//]: # (    {% include archive-single-talk-cv.html  %})
+
+[//]: # (  {% endfor %}</ul>)
   
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+[//]: # (Teaching)
+
+[//]: # (======)
+
+[//]: # (  <ul>{% for post in site.teaching reversed %})
+
+[//]: # (    {% include archive-single-cv.html %})
+
+[//]: # (  {% endfor %}</ul>)
+
+[//]: # (Service and leadership)
+
+[//]: # (======)
+
+[//]: # (* Currently signed in to 43 different slack teams)
