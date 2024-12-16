@@ -7,7 +7,8 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
+[//]: # ({% include base_path %})
+
 
 Education
 ======
@@ -54,9 +55,9 @@ Programming
 Honors
 =====
 Olympiad Competitions
-  * Silver Medal, National Olympiad of Astronomy and Astrophysics, Summer 2015, Tehran, Iran
+  * Silver Medal, International Physics Olympiad ([IPhO](https://ipho-unofficial.org/timeline/2017/individual)), Summer 2017, Yogyakarta, Indonesia
   * Gold Medal, National Physics Olympiad, Summer 2016, Tehran, Iran
-  * Silver Medal, International Physics Olympiad, Summer 2017, Yogyakarta, Indonesia
+  * Silver Medal, National Olympiad of Astronomy and Astrophysics, Summer 2015, Tehran, Iran
 
 [//]: # (Talks)
 
