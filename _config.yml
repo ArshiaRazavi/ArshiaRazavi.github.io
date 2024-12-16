@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title: "Arshia Razavi | Computational Neuroscience, AI, and Physics Research"
+title: "Arshia Razavi"
 title_separator          : "-"
 name                     : &name "Arshia Razavi"
 description: "Explore Arshia Razavi's work in computational neuroscience, AI, and physics, including cutting-edge research and projects in neural networks and intelligent systems."
