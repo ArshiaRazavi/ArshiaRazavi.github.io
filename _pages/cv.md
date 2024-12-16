@@ -7,11 +7,14 @@ redirect_from:
   - /resume
 ---
 
-[//]: # ({% include base_path %})
+{% include base_path %}
 
+
+View my academic and research CV [here](pdfs/Arshia_Razavi_CV.pdf).
 
 Education
 ======
+
 * M.SC. in Physics, [University of Calgary](https:ucalgary.ca), 2022-Present
 * B.SC. in Physics, [Sharif University of Technology](https://en.sharif.edu), 2017-2022
 
@@ -59,28 +62,30 @@ Olympiad Competitions
   * Gold Medal, National Physics Olympiad, Summer 2016, Tehran, Iran
   * Silver Medal, National Olympiad of Astronomy and Astrophysics, Summer 2015, Tehran, Iran
 
-[//]: # (Talks)
+<!--
+Talks
+======
 
-[//]: # (======)
+  <ul>{% for post in site.talks reversed %}
 
-[//]: # (  <ul>{% for post in site.talks reversed %})
 
-[//]: # (    {% include archive-single-talk-cv.html  %})
+    {% include archive-single-talk-cv.html  %}
 
-[//]: # (  {% endfor %}</ul>)
+
+  {% endfor %}</ul>
   
-[//]: # (Teaching)
+Teaching
+======
 
-[//]: # (======)
+  <ul>{% for post in site.teaching reversed %}
 
-[//]: # (  <ul>{% for post in site.teaching reversed %})
+    {% include archive-single-cv.html %}
 
-[//]: # (    {% include archive-single-cv.html %})
+  {% endfor %}</ul>
 
-[//]: # (  {% endfor %}</ul>)
+Service and leadership
 
-[//]: # (Service and leadership)
+======
 
-[//]: # (======)
-
-[//]: # (* Currently signed in to 43 different slack teams)
+* Currently signed in to 43 different slack teams
+-->
