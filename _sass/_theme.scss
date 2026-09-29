@@ -1,0 +1,185 @@
+/* ==========================================================================
+   THEME TOKENS (light / dark)
+   ==========================================================================
+
+   All themed colors are CSS custom properties so they can switch at runtime.
+   The semantic Sass variables in _variables.scss ($text-color, $link-color,
+   ...) resolve to these tokens, which means they cannot be passed to Sass
+   color functions (mix, darken, rgba, ...). Add a token here instead.
+
+   Theme selection:
+   - no data-theme attribute: follows prefers-color-scheme
+   - html[data-theme="light" | "dark"]: explicit choice, set by the inline
+     script in _includes/head.html and assets/js/theme-toggle.js
+*/
+
+@mixin theme-light {
+  color-scheme: light;
+
+  --color-bg: #ffffff;
+  --color-bg-alt: #f2f3f6;
+  --color-text: #1f2330;
+  --color-text-muted: #5b6170;
+  --color-accent: #3949ab;
+  --color-accent-hover: #283593;
+  --color-accent-soft: #e8eaf6;
+  --color-on-accent: #ffffff;
+  --color-border: #dde0e6;
+  --color-border-strong: #858b99;
+  --color-code-bg: #f7f8fa;
+  --color-focus: #b45309;
+  --color-shadow: rgba(0, 0, 0, 0.125);
+  --color-overlay: rgba(255, 255, 255, 0.85);
+
+  --syntax-text: #24292f;
+  --syntax-comment: #5c6570;
+  --syntax-keyword: #c11f2b;
+  --syntax-name: #7a3fd6;
+  --syntax-string: #116329;
+  --syntax-constant: #0550ae;
+  --syntax-special: #a40e26;
+  --syntax-builtin: #953800;
+}
+
+@mixin theme-dark {
+  color-scheme: dark;
+
+  --color-bg: #0f1117;
+  --color-bg-alt: #1a1d26;
+  --color-text: #e6e8ee;
+  --color-text-muted: #a3a9b7;
+  --color-accent: #8c9eff;
+  --color-accent-hover: #b3bfff;
+  --color-accent-soft: #232a4d;
+  --color-on-accent: #0f1117;
+  --color-border: #2a2f3a;
+  --color-border-strong: #6b7385;
+  --color-code-bg: #161922;
+  --color-focus: #fbbf24;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-overlay: rgba(15, 17, 23, 0.85);
+
+  --syntax-text: #e6edf3;
+  --syntax-comment: #8b949e;
+  --syntax-keyword: #ff7b72;
+  --syntax-name: #d2a8ff;
+  --syntax-string: #7ee787;
+  --syntax-constant: #79c0ff;
+  --syntax-special: #ffa198;
+  --syntax-builtin: #ffa657;
+}
+
+:root {
+  @include theme-light;
+}
+
+:root[data-theme="dark"] {
+  @include theme-dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include theme-dark;
+  }
+}
+
+/* always print on a light background */
+@media print {
+  :root,
+  :root[data-theme="dark"],
+  :root:not([data-theme="light"]) {
+    @include theme-light;
+  }
+}
+
+
+/*
+   Theme toggle (masthead)
+   ========================================================================== */
+
+.masthead__menu {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+
+  .greedy-nav {
+    -webkit-box-flex: 1;
+            flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+.theme-toggle {
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.5rem;
+  padding: 0;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-border);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* the icon shows the theme a click switches to */
+  .theme-toggle__icon--sun {
+    display: none;
+  }
+}
+
+.no-js .theme-toggle {
+  display: none;
+}
+
+@mixin theme-toggle-dark-icons {
+  .theme-toggle__icon--sun {
+    display: block;
+  }
+
+  .theme-toggle__icon--moon {
+    display: none;
+  }
+}
+
+:root[data-theme="dark"] .theme-toggle {
+  @include theme-toggle-dark-icons;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle {
+    @include theme-toggle-dark-icons;
+  }
+}

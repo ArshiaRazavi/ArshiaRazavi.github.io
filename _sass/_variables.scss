@@ -61,14 +61,18 @@ $darker-gray                : mix(#000, $gray, 60%);
 $light-gray                 : mix(#fff, $gray, 50%);
 $lighter-gray               : mix(#fff, $gray, 90%);
 
-$body-color                 : #fff;
-$background-color           : #fff;
-$code-background-color      : #fafafa;
-$code-background-color-dark : $light-gray;
-$text-color                 : $dark-gray;
-$border-color               : $lighter-gray;
+/* themed colors: resolve to the CSS custom properties in _theme.scss, so
+   they switch with light/dark mode. They cannot be passed to Sass color
+   functions (mix, darken, rgba, ...); add a token to _theme.scss instead. */
+$body-color                 : var(--color-bg);
+$background-color           : var(--color-bg);
+$code-background-color      : var(--color-code-bg);
+$code-background-color-dark : var(--color-bg-alt);
+$text-color                 : var(--color-text);
+$muted-text-color           : var(--color-text-muted);
+$border-color               : var(--color-border);
 
-$primary-color              : #7a8288;
+$primary-color              : var(--color-accent);
 $success-color              : #62c462;
 $warning-color              : #f89406;
 $danger-color               : #ee5f5b;
@@ -102,11 +106,11 @@ $xing-color                 : #006567;
 
 
 /* links */
-$link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 25%);
-$link-color-visited         : mix(#fff, $link-color, 25%);
-$masthead-link-color        : $primary-color;
-$masthead-link-color-hover  : mix(#000, $primary-color, 25%);
+$link-color                 : var(--color-accent);
+$link-color-hover           : var(--color-accent-hover);
+$link-color-visited         : $link-color;
+$masthead-link-color        : var(--color-text-muted);
+$masthead-link-color-hover  : var(--color-accent);
 
 
 /*
@@ -159,7 +163,7 @@ $susy: (
    ========================================================================== */
 
 $border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$box-shadow                 : 0 1px 1px var(--color-shadow);
 $navicon-width              : 28px;
 $navicon-height             : 4px;
 $global-transition          : all 0.2s ease-in-out;
