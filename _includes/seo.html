@@ -48,8 +48,29 @@
   <meta property="og:url" content="{{ page.url | prepend: seo_url | replace: "/index.html", "/" }}">
 {% endif %}
 
-{% if page.excerpt %}
+{% if seo_description %}
+  <meta name="description" content="{{ seo_description }}">
   <meta property="og:description" content="{{ seo_description }}">
+{% endif %}
+
+{% if page.header.image %}
+  {% assign seo_image = page.header.image %}
+{% elsif page.header.overlay_image %}
+  {% assign seo_image = page.header.overlay_image %}
+{% else %}
+  {% assign seo_image = site.og_image %}
+{% endif %}
+{% if seo_image %}
+  {% unless seo_image contains "://" %}
+    {% assign seo_image = seo_image | prepend: "/images/" | prepend: base_path %}
+  {% endunless %}
+{% endif %}
+
+{% if seo_image %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ seo_image }}">
+{% else %}
+  <meta name="twitter:card" content="summary">
 {% endif %}
 
 {% if site.twitter.username %}
@@ -57,16 +78,6 @@
   <meta name="twitter:title" content="{{ page.title | default: site.title | markdownify | strip_html | strip_newlines | escape_once }}">
   <meta name="twitter:description" content="{{ seo_description }}">
   <meta name="twitter:url" content="{{ canonical_url }}">
-
-  {% if page.header.image %}
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{% if page.header.image contains "://" %}{{ page.header.image }}{% else %}{{ page.header.image | prepend: "/images/" | prepend: base_path }}{% endif %}">
-  {% else %}
-    <meta name="twitter:card" content="summary">
-    {% if site.og_image %}
-      <meta name="twitter:image" content="{{ site.og_image | prepend: "/images/" | prepend: base_path }}">
-    {% endif %}
-  {% endif %}
 
   {% if seo_author_twitter %}
     <meta name="twitter:creator" content="@{{ seo_author_twitter }}">
@@ -83,15 +94,15 @@
   {% endif %}
 {% endif %}
 
-{% if page.header.image %}
-  <meta property="og:image" content="{% if page.header.image contains "://" %}{{ page.header.image }}{% else %}{{ page.header.image | prepend: "/images/" | prepend: base_path }}{% endif %}">
-{% elsif page.header.overlay_image %}
-  <meta property="og:image" content="{% if page.header.overlay_image contains "://" %}{{ page.header.overlay_image }}{% else %}{{ page.header.overlay_image | prepend: "/images/" | prepend: base_path }}{% endif %}">
+{% if seo_image %}
+  <meta property="og:image" content="{{ seo_image }}">
 {% endif %}
 
 {% if page.date %}
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{% else %}
+  <meta property="og:type" content="website">
 {% endif %}
 
 {% if paginator.previous_page %}
@@ -101,28 +112,46 @@
   <link rel="next" href="{{ paginator.next_page_path | prepend: seo_url }}">
 {% endif %}
 
-{% if site.og_image %}
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
+{% assign seo_profile = site.author %}
+{% capture seo_same_as %}
+  {%- if seo_profile.uri -%}{{ seo_profile.uri }}|{%- endif -%}
+  {%- if seo_profile.github -%}https://github.com/{{ seo_profile.github }}|{%- endif -%}
+  {%- if seo_profile.linkedin -%}https://www.linkedin.com/in/{{ seo_profile.linkedin }}|{%- endif -%}
+  {%- if seo_profile.googlescholar -%}{{ seo_profile.googlescholar }}|{%- endif -%}
+  {%- if seo_profile.orcid -%}{{ seo_profile.orcid }}|{%- endif -%}
+  {%- if seo_profile.researchgate -%}{{ seo_profile.researchgate }}|{%- endif -%}
+  {%- if seo_profile.semantic -%}{{ seo_profile.semantic }}|{%- endif -%}
+  {%- if seo_profile.arxiv -%}{{ seo_profile.arxiv }}|{%- endif -%}
+  {%- if seo_profile.pubmed -%}{{ seo_profile.pubmed }}|{%- endif -%}
+  {%- if seo_profile.twitter -%}https://twitter.com/{{ seo_profile.twitter }}|{%- endif -%}
+  {%- if seo_profile.bluesky -%}https://bsky.app/profile/{{ seo_profile.bluesky }}|{%- endif -%}
+  {%- if seo_profile.mastodon -%}{{ seo_profile.mastodon }}|{%- endif -%}
+  {%- for link in site.social.links -%}{{ link }}|{%- endfor -%}
+{% endcapture %}
+{% assign seo_same_as = seo_same_as | strip | split: "|" %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ site.social.name | default: seo_profile.name | default: site.name | jsonify }},
+    "url": {{ seo_url | jsonify }}
+    {%- if seo_profile.avatar -%},
+    "image": {% if seo_profile.avatar contains "://" %}{{ seo_profile.avatar | jsonify }}{% else %}{{ seo_profile.avatar | prepend: "/images/" | prepend: base_path | jsonify }}{% endif %}
+    {%- endif -%}
+    {%- if seo_profile.bio -%},
+    "description": {{ seo_profile.bio | jsonify }}
+    {%- endif -%}
+    {%- if seo_profile.employer -%},
+    "affiliation": {
       "@type": "Organization",
-      "url": {{ seo_url | jsonify }},
-      "logo": {{ site.og_image | prepend: "/images/" | prepend: base_path | jsonify }}
+      "name": {{ seo_profile.employer | jsonify }}
     }
-  </script>
-{% endif %}
-
-{% if site.social %}
-  <script type="application/ld+json">
-    {
-      "@context" : "http://schema.org",
-      "@type" : "{% if site.social.type %}{{ site.social.type }}{% else %}Person{% endif %}",
-      "name" : "{{ site.social.name | default: site.name }}",
-      "url" : {{ seo_url | jsonify }},
-      "sameAs" : {{ site.social.links | jsonify }}
-    }
-  </script>
-{% endif %}
+    {%- endif -%}
+    {%- if seo_same_as.size > 0 -%},
+    "sameAs": {{ seo_same_as | jsonify }}
+    {%- endif %}
+  }
+</script>
 
 {% if site.google_site_verification %}
   <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
