@@ -1,16 +1,22 @@
 {% include base_path %}
 
-{% if site.author.github or site.author.bitbucket or site.atom_feed.hide != true %}
+{% if site.author.github or site.author.linkedin or site.author.email or site.author.bitbucket or site.atom_feed.hide != true %}
 <div class="page__footer-follow">
   <ul class="social-icons">
     {% if site.data.ui-text[site.locale].follow_label %}
-      <li><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
+      <li class="page__footer-follow-label"><strong>{{ site.data.ui-text[site.locale].follow_label }}</strong></li>
     {% endif %}
     {% if site.author.github %}
-      <li><a href="http://github.com/{{ site.author.github }}"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+      <li><a href="https://github.com/{{ site.author.github }}" aria-label="GitHub profile"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    {% endif %}
+    {% if site.author.linkedin %}
+      <li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn profile"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+    {% endif %}
+    {% if site.author.email %}
+      <li><a href="mailto:{{ site.author.email }}" aria-label="Email {{ site.author.name | default: site.name }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
     {% endif %}
     {% if site.author.bitbucket %}
-      <li><a href="http://bitbucket.org/{{ site.author.bitbucket }}"><i class="fab fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
+      <li><a href="https://bitbucket.org/{{ site.author.bitbucket }}"><i class="fab fa-fw fa-bitbucket" aria-hidden="true"></i> Bitbucket</a></li>
     {% endif %}
     {% if site.atom_feed.hide != true %}
     <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].feed_label | default: "Feed" }}</a></li>
@@ -19,4 +25,8 @@
 </div>
 {% endif %}
 
-<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}. {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}</div>
+<nav class="page__footer-links" aria-label="Footer">
+  <a href="{{ base_path }}/sitemap/">Sitemap</a>
+</nav>
+<div class="page__footer-credit">Built with <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> and <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
