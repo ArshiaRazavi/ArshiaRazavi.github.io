@@ -90,7 +90,7 @@ atom_feed:
 
 
 # SEO Related
-google_site_verification : google72eb8b905fb96562.html
+google_site_verification : # Search Console meta-tag token only (not a filename); HTML-file verification uses /google72eb8b905fb96562.html
 bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
@@ -103,7 +103,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "og-image.png" # Open Graph/Twitter default site image, relative to /images/
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
