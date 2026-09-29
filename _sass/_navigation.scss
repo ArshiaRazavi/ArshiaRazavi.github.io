@@ -177,7 +177,8 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: $background-color;
+  /* transparent so the scrolled masthead's backdrop blur shows through */
+  background: transparent;
 
   a {
     display: block;
@@ -186,8 +187,20 @@
     color: $masthead-link-color;
     text-decoration: none;
 
-    &:hover {
+    &:hover,
+    &:focus-visible,
+    &[aria-current="page"] {
       color: $masthead-link-color-hover;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 2px;
     }
   }
 
@@ -197,11 +210,21 @@
     right: 0;
     padding: 0 0.5rem;
     border: 0;
+    border-radius: $border-radius;
     outline: none;
     background-color: $primary-color;
     color: var(--color-on-accent);
     cursor: pointer;
     z-index: 100;
+
+    &:hover {
+      background-color: $link-color-hover;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+    }
   }
 
   .visible-links {
@@ -235,7 +258,8 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        height: 4px;
+        height: 3px;
+        border-radius: 3px;
         background: $primary-color;
         width: 100%;
         -webkit-transition: $global-transition;
@@ -245,7 +269,9 @@
                 transform: scaleX(0); /* hide*/
       }
 
-      &:hover:before {
+      &:hover:before,
+      &:focus-visible:before,
+      &[aria-current="page"]:before {
         -webkit-transform: scaleX(1);
             -ms-transform: scaleX(1);
                 transform: scaleX(1); /* reveal*/
@@ -269,9 +295,19 @@
       padding: 10px 20px;
       font-size: $type-size-5;
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         color: $masthead-link-color-hover;
         background: var(--color-accent-soft);
+      }
+
+      &:focus-visible {
+        outline-offset: -2px;
+      }
+
+      &[aria-current="page"] {
+        font-weight: 700;
+        box-shadow: inset 3px 0 0 $primary-color;
       }
     }
 
