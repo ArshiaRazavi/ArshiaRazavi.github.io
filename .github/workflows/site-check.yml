@@ -38,9 +38,13 @@ jobs:
       # _includes/base_path renders internal links as absolute site.url links;
       # swap them to root-relative so they are checked as internal, not skipped
       # as external.
+      # --ignore-urls exempts only the supervisor's site (javierorlandi.com)
+      # from enforce_https: it has no valid TLS certificate as of 2026-09-28,
+      # so an https:// link would break for visitors. Remove it once it does.
       - name: Check links, images and scripts
         run: >-
           htmlproofer ./_site
           --checks Links,Images,Scripts
           --disable-external
           --swap-urls '^https\://arshiarazavi\.github\.io:'
+          --ignore-urls '/^http:\/\/javierorlandi\.com/'
