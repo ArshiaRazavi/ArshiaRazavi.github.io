@@ -2,22 +2,13 @@
  *
  * The inline script in _includes/head.html applies a saved choice before
  * first paint; without one, CSS follows prefers-color-scheme. This file wires
- * the masthead button, persists the choice and keeps aria-pressed and
- * <meta name="theme-color"> in sync.
+ * the masthead button, persists the choice and keeps aria-pressed in sync.
+ * <meta name="theme-color"> is left static (the site accent) on purpose.
  */
 (function () {
   var STORAGE_KEY = 'theme';
   var root = document.documentElement;
   var systemDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-
-  function readSavedTheme() {
-    try {
-      var theme = localStorage.getItem(STORAGE_KEY);
-      return theme === 'dark' || theme === 'light' ? theme : null;
-    } catch (e) {
-      return null;
-    }
-  }
 
   function saveTheme(theme) {
     try {
@@ -35,17 +26,6 @@
     return systemDark && systemDark.matches ? 'dark' : 'light';
   }
 
-  function syncThemeColorMeta() {
-    var background = getComputedStyle(root).getPropertyValue('--color-bg').trim();
-    if (!background) {
-      return;
-    }
-    var metas = document.querySelectorAll('meta[name="theme-color"]');
-    for (var i = 0; i < metas.length; i++) {
-      metas[i].setAttribute('content', background);
-    }
-  }
-
   function syncButton(button) {
     button.setAttribute('aria-pressed', currentTheme() === 'dark' ? 'true' : 'false');
   }
@@ -57,16 +37,12 @@
     }
 
     syncButton(button);
-    if (readSavedTheme()) {
-      syncThemeColorMeta();
-    }
 
     button.addEventListener('click', function () {
       var next = currentTheme() === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       saveTheme(next);
       syncButton(button);
-      syncThemeColorMeta();
     });
 
     if (systemDark) {
