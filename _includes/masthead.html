@@ -3,8 +3,8 @@
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
+      <nav id="site-nav" class="greedy-nav" aria-label="Main">
+        <button type="button" aria-label="More pages"><div class="navicon"></div></button>
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a></li>
           {% for link in site.data.navigation.main %}
@@ -13,7 +13,14 @@
               {% else %}
               {% assign domain = base_path %}
             {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            {% assign is_current = false %}
+            {% if link.url == '/' %}
+              {% if page.url == '/' %}{% assign is_current = true %}{% endif %}
+            {% else %}
+              {% assign page_url_prefix = page.url | slice: 0, link.url.size %}
+              {% if page_url_prefix == link.url %}{% assign is_current = true %}{% endif %}
+            {% endif %}
+            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}"{% if is_current %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
           {% endfor %}
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -30,3 +37,13 @@
     </div>
   </div>
 </div>
+<script>
+  (function () {
+    var masthead = document.querySelector('.masthead');
+    var markScrolled = function () {
+      masthead.classList.toggle('masthead--scrolled', window.pageYOffset > 0);
+    };
+    markScrolled();
+    window.addEventListener('scroll', markScrolled, { passive: true });
+  })();
+</script>
