@@ -25,6 +25,7 @@
 
   .page__inner-wrap {
     @include full();
+    max-width: $content-measure;
 
     .page__content,
     .page__meta,
@@ -36,7 +37,8 @@
 
 .page__title {
   margin-top: 0;
-  line-height: 1;
+  font-size: $type-size-2;
+  line-height: 1.15;
 
   & + .page__meta {
     margin-top: -0.5em;
@@ -87,7 +89,7 @@
   dt {
     margin-top: 1em;
     font-family: $sans-serif;
-    font-weight: bold;
+    font-weight: $bold-font-weight;
   }
 
   dd {
