@@ -91,11 +91,17 @@
 
   img {
     max-width: 175px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--color-border);
 
     @include breakpoint($large) {
-      padding: 5px;
-      border: 1px solid $border-color;
+      padding: 4px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 2px 10px var(--color-shadow);
     }
   }
 }
@@ -255,6 +261,75 @@
 
     &:hover {
       text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+  }
+
+  .author__url-label {
+    margin-left: 0.35em;
+  }
+
+  // Desktop: location/employer stay as text lines, links collapse into an
+  // icon row. The <ul> keeps display:block because _main.js toggles it with
+  // jQuery show()/hide(), which writes an inline display:block.
+  @include breakpoint($large) {
+    .author__desktop {
+      margin-bottom: 0.35em;
+      color: $muted-text-color;
+      white-space: normal;
+
+      i {
+        width: 1.25em;
+        text-align: center;
+        margin-right: 0.35em;
+      }
+    }
+
+    li:not(.author__desktop) {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0.5em 0.25em 0 0;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      margin: 0;
+      padding: 0;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      color: $muted-text-color;
+      font-size: 1.05rem;
+      transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+
+      &:hover {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+        background-color: var(--color-accent-soft);
+        text-decoration: none;
+      }
+    }
+
+    // One neutral icon set; brand colours from _utilities.scss stay in the
+    // mobile dropdown.
+    &.social-icons a i {
+      color: inherit;
+    }
+
+    .author__url-label {
+      position: absolute !important;
+      clip: rect(1px, 1px, 1px, 1px);
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 }
