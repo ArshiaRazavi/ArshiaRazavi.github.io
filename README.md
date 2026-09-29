@@ -1,51 +1,51 @@
-# Academic Pages
+# arshiarazavi.github.io
 
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
+Personal academic site of Arshia Razavi, M.Sc. student in Physics at the
+University of Calgary. Live at <https://arshiarazavi.github.io>.
 
-Academic Pages is a Github Pages template for academic websites.
+The site is built with [Jekyll](https://jekyllrb.com) and published by
+GitHub Pages, which builds it directly from this repository.
 
-# Getting Started
+## Running locally
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+Requires Ruby (with development headers) and Bundler.
 
-See more info at https://academicpages.github.io/
+- **macOS:** install Ruby via Homebrew (`brew install ruby`) and put the
+  Homebrew Ruby on your `PATH`, then `gem install bundler`.
+- **Linux / WSL:** `sudo apt install ruby-dev ruby-bundler nodejs`. Some
+  distributions also need `sudo apt install build-essential gcc make` to
+  compile native gems.
 
-## Running Locally
+Then, from the repository root:
 
-When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+```bash
+bundle install
+bundle exec jekyll serve --livereload
+```
 
-1. Clone the repository and made updates as detailed above.
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `bundle exec jekyll serve --livereload` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+The site is served at <http://localhost:4000> and rebuilds on save.
+Changes to `_config.yml` need a server restart.
 
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
+The `Gemfile` pins the `github-pages` gem so local builds match what
+GitHub Pages runs. `Gemfile.lock` is gitignored, so `bundle install`
+resolves fresh versions on each machine.
 
-# Maintenance
+## Where content lives
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+| Content                          | Location                                             |
+|----------------------------------|------------------------------------------------------|
+| Homepage                         | `_pages/about.md`                                    |
+| CV page and PDF                  | `_pages/cv.md`, `pdfs/`                              |
+| Blog posts                       | `_posts/`                                            |
+| Navigation menu                  | `_data/navigation.yml`                               |
+| Site settings and author sidebar | `_config.yml`                                        |
+| Styles                           | `_sass/`, `assets/css/main.scss`                     |
+| Images                           | `images/`                                            |
+| Collections                      | `_publications/`, `_talks/`, `_teaching/`, `_portfolio/` |
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+## Credits and license
 
-## Bugfixes and enhancements
-
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
-
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
+Built on [AcademicPages](https://github.com/academicpages/academicpages.github.io),
+a fork of the [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)
+Jekyll theme by Michael Rose. The theme code is released under the MIT
+License; see [`LICENSE`](LICENSE).
