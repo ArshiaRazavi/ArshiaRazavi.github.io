@@ -10,13 +10,13 @@ redirect_from:
 {% include base_path %}
 
 
-View my academic and research CV [here](pdfs/Arshia_Razavi_CV.pdf).
+View my academic and research CV [here](/pdfs/Arshia_Razavi_CV.pdf).
 
 Education
 ======
 
-* M.SC. in Physics, [University of Calgary](https:ucalgary.ca), 2022-Present
-* B.SC. in Physics, [Sharif University of Technology](https://en.sharif.edu), 2017-2022
+* M.Sc. in Physics, [University of Calgary](https://www.ucalgary.ca), 2022-Present
+* B.Sc. in Physics, [Sharif University of Technology](https://en.sharif.edu), 2017-2022
 
 [//]: # (Work experience)
 
