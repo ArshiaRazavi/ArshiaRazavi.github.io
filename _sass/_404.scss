@@ -1,0 +1,42 @@
+/* ==========================================================================
+   404 PAGE
+   ========================================================================== */
+
+.not-found {
+  margin-top: 1em;
+
+  &__neuron {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+    color: var(--color-text-muted);
+  }
+
+  &__axon {
+    stroke: var(--color-accent);
+    stroke-dasharray: 4 5;
+  }
+
+  &__spark {
+    stroke: var(--color-focus);
+  }
+
+  &__lead {
+    font-size: $type-size-4;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 1.5em;
+
+    .btn {
+      margin-bottom: 0;
+      text-decoration: none;
+    }
+  }
+}
