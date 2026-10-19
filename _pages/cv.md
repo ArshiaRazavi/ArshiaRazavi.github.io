@@ -1,6 +1,7 @@
 ---
 layout: archive
 title: "CV"
+description: "CV of Arshia Razavi: M.Sc. in Physics at the University of Calgary, B.Sc. in Physics from Sharif University of Technology, and a Silver Medal at the 2017 International Physics Olympiad."
 permalink: /cv/
 author_profile: true
 redirect_from:
