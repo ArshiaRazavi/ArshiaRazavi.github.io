@@ -1,6 +1,7 @@
 ---
 permalink: /
 title: ""
+description: "Arshia Razavi is an M.Sc. student in Physics at the University of Calgary, supervised by Prof. Javier Orlandi, researching computational neuroscience."
 author_profile: true
 redirect_from: 
   - /about/
