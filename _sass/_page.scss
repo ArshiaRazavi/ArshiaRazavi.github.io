@@ -79,7 +79,7 @@
       text-decoration: underline;
 
       img {
-        box-shadow: 0 0 10px rgba(#000, 0.25);
+        box-shadow: 0 0 10px var(--color-shadow);
       }
     }
   }
@@ -227,7 +227,7 @@
 
 .page__meta {
   margin-top: 2em;
-  color: mix(#fff, $gray, 25%);
+  color: $muted-text-color;
   font-family: $sans-serif;
   font-size: $type-size-6;
 
@@ -267,7 +267,7 @@
   margin-bottom: 8px;
   padding: 5px 10px;
   text-decoration: none;
-  border: 1px solid $light-gray;
+  border: 1px solid $border-color;
   border-radius: $border-radius;
 
   &:hover {
@@ -296,7 +296,7 @@
 
 .page__comments-form {
   padding: 1em;
-  background: $lighter-gray;
+  background: var(--color-bg-alt);
   transition: $global-transition;
 
   &.disabled {
