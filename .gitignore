@@ -14,3 +14,7 @@ package-lock.json
 # Ignore bundler config and installed gems
 .bundle/
 vendor/
+
+# Ignore OS and IDE files
+.DS_Store
+.idea/

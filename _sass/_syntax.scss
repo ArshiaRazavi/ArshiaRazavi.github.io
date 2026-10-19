@@ -69,11 +69,11 @@ div.highlighter-rouge, figure.highlight {
 .highlight .cp { color: var(--syntax-keyword) } /* Comment.Preproc */
 .highlight .c1 { color: var(--syntax-comment) } /* Comment.Single */
 .highlight .cs { color: var(--syntax-keyword) } /* Comment.Special */
-.highlight .gd { color: var(--syntax-string) } /* Generic.Deleted */
+.highlight .gd { color: var(--syntax-keyword) } /* Generic.Deleted */
 .highlight .ge { color: var(--syntax-text); font-style: italic } /* Generic.Emph */
 .highlight .gr { color: var(--syntax-special) } /* Generic.Error */
 .highlight .gh { color: var(--syntax-constant) } /* Generic.Heading */
-.highlight .gi { color: var(--syntax-keyword) } /* Generic.Inserted */
+.highlight .gi { color: var(--syntax-string) } /* Generic.Inserted */
 .highlight .go { color: var(--syntax-text) } /* Generic.Output */
 .highlight .gp { color: var(--syntax-text) } /* Generic.Prompt */
 .highlight .gs { color: var(--syntax-text); font-weight: bold } /* Generic.Strong */
