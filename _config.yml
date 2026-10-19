@@ -25,9 +25,9 @@ author:
   avatar           : "profile2.jpg"
   name             : "Arshia Razavi"
   pronouns         : # example: "she/her"  
-  bio              : "Computational neuroscience · Physics M.Sc. @ UCalgary"
+  bio              : "Full Stack Software Engineer @ AltaML · Physics M.Sc., UCalgary"
   location         : "Calgary, Canada"
-  employer         : "University of Calgary"
+  employer         : "AltaML"
   uri              : # URL
   email            : "SeyedArshia.Razavi@ucalgary.ca"
 
@@ -182,7 +182,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   publications:
-    output: false
+    output: true
     permalink: /:collection/:path/
   talks:
     output: true
