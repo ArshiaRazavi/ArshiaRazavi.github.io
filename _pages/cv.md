@@ -16,7 +16,8 @@ View my academic and research CV [here](/pdfs/Arshia_Razavi_CV.pdf).
 Education
 ======
 
-* M.Sc. in Physics, [University of Calgary](https://www.ucalgary.ca), 2022-Present
+* M.Sc. in Physics, [University of Calgary](https://www.ucalgary.ca), 2022-2026  
+  Thesis: [*Learning and Stabilizing Memories in Recurrent Spiking Neural Networks*](/publication/2026-07-06-msc-thesis)
 * B.Sc. in Physics, [Sharif University of Technology](https://en.sharif.edu), 2017-2022
 
 [//]: # (Work experience)
