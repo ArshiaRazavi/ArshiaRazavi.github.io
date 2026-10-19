@@ -33,7 +33,7 @@ author:
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    :
+  googlescholar    : "https://scholar.google.com/citations?user=L13TvcUAAAAJ"
   impactstory      : # URL
   orcid            :
   semantic         : # URL
@@ -124,7 +124,6 @@ include:
   - .htaccess
   - _pages
   - files
-  - _posts
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -238,6 +237,11 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+  # Google Search Console verification file
+  - scope:
+      path: "google72eb8b905fb96562.html"
+    values:
+      sitemap: false
 
 
 # Sass/SCSS
