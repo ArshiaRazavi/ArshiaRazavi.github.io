@@ -1,0 +1,50 @@
+name: Site check
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      # Matches the Ruby GitHub Pages builds with. Gemfile.lock is gitignored,
+      # so setup-ruby resolves one from the Gemfile before caching.
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build site
+        env:
+          JEKYLL_ENV: production
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bundle exec jekyll build
+
+      - name: Install html-proofer
+        run: gem install html-proofer --version "~> 5.0" --no-document
+
+      # _includes/base_path renders internal links as absolute site.url links;
+      # swap them to root-relative so they are checked as internal, not skipped
+      # as external.
+      # --ignore-urls exempts only the supervisor's site (javierorlandi.com)
+      # from enforce_https: it has no valid TLS certificate as of 2026-09-28,
+      # so an https:// link would break for visitors. Remove it once it does.
+      - name: Check links, images and scripts
+        run: >-
+          htmlproofer ./_site
+          --checks Links,Images,Scripts
+          --disable-external
+          --swap-urls '^https\://arshiarazavi\.github\.io:'
+          --ignore-urls '/^http:\/\/javierorlandi\.com/'
