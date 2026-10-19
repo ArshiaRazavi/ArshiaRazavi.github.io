@@ -14,8 +14,8 @@ $indent-var                 : 1.3em;
 
 /* system typefaces */
 $serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
+$sans-serif                 : "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$monospace                  : ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Lucida Console", monospace;
 
 /* sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;
@@ -27,17 +27,30 @@ $times                      : Times, serif;
 $bodoni                     : "Bodoni MT", serif;
 $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
+$source-serif               : "Source Serif 4", Georgia, "Times New Roman", serif;
 
 $global-font-family         : $sans-serif;
-$header-font-family         : $sans-serif;
-$caption-font-family        : $serif;
+$header-font-family         : $source-serif;
+$caption-font-family        : $sans-serif;
+
+/* weights: only these are loaded from Google Fonts (see _includes/head.html) */
+$body-font-weight           : 400;
+$bold-font-weight           : 600;
+$header-font-weight         : 600;
+
+/* rhythm and measure */
+$body-line-height           : 1.65;
+$header-line-height         : 1.25;
+$content-measure            : 70ch;
 
 /* type scale */
 $type-size-1                : 2.441em;  // ~39.056px
 $type-size-2                : 1.953em;  // ~31.248px
 $type-size-3                : 1.563em;  // ~25.008px
 $type-size-4                : 1.25em;   // ~20px
+$type-size-4-5              : 1.125em;  // ~18px
 $type-size-5                : 1em;      // ~16px
+$type-size-5-5              : 0.875em;  // ~14px
 $type-size-6                : 0.75em;   // ~12px
 $type-size-7                : 0.6875em; // ~11px
 $type-size-8                : 0.625em;  // ~10px
@@ -61,14 +74,18 @@ $darker-gray                : mix(#000, $gray, 60%);
 $light-gray                 : mix(#fff, $gray, 50%);
 $lighter-gray               : mix(#fff, $gray, 90%);
 
-$body-color                 : #fff;
-$background-color           : #fff;
-$code-background-color      : #fafafa;
-$code-background-color-dark : $light-gray;
-$text-color                 : $dark-gray;
-$border-color               : $lighter-gray;
+/* themed colors: resolve to the CSS custom properties in _theme.scss, so
+   they switch with light/dark mode. They cannot be passed to Sass color
+   functions (mix, darken, rgba, ...); add a token to _theme.scss instead. */
+$body-color                 : var(--color-bg);
+$background-color           : var(--color-bg);
+$code-background-color      : var(--color-code-bg);
+$code-background-color-dark : var(--color-bg-alt);
+$text-color                 : var(--color-text);
+$muted-text-color           : var(--color-text-muted);
+$border-color               : var(--color-border);
 
-$primary-color              : #7a8288;
+$primary-color              : var(--color-accent);
 $success-color              : #62c462;
 $warning-color              : #f89406;
 $danger-color               : #ee5f5b;
@@ -102,11 +119,11 @@ $xing-color                 : #006567;
 
 
 /* links */
-$link-color                 : $info-color;
-$link-color-hover           : mix(#000, $link-color, 25%);
-$link-color-visited         : mix(#fff, $link-color, 25%);
-$masthead-link-color        : $primary-color;
-$masthead-link-color-hover  : mix(#000, $primary-color, 25%);
+$link-color                 : var(--color-accent);
+$link-color-hover           : var(--color-accent-hover);
+$link-color-visited         : $link-color;
+$masthead-link-color        : var(--color-text-muted);
+$masthead-link-color-hover  : var(--color-accent);
 
 
 /*
@@ -159,7 +176,7 @@ $susy: (
    ========================================================================== */
 
 $border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$box-shadow                 : 0 1px 1px var(--color-shadow);
 $navicon-width              : 28px;
 $navicon-height             : 4px;
 $global-transition          : all 0.2s ease-in-out;
