@@ -1,7 +1,7 @@
 ---
 permalink: /
 title: ""
-description: "Arshia Razavi is an M.Sc. student in Physics at the University of Calgary, supervised by Prof. Javier Orlandi, researching computational neuroscience."
+description: "Arshia Razavi is a full stack software engineer at AltaML, with an M.Sc. in Physics from the University of Calgary on learning and stabilizing memories in spiking neural networks."
 author_profile: true
 redirect_from: 
   - /about/
@@ -12,7 +12,7 @@ Welcome
 =====
 
 Hello! <br>
-I'm Arshia Razavi, an M.Sc. student in Physics at [University of Calgary](https://www.ucalgary.ca) supervised by Prof. [Javier Orlandi](http://javierorlandi.com), where I research questions in computational neuroscience.
+I'm Arshia Razavi, a full stack software engineer at [AltaML](https://www.altaml.com). I completed my M.Sc. in Physics at the [University of Calgary](https://www.ucalgary.ca), supervised by Prof. [Javier Orlandi](http://javierorlandi.com), with a thesis on how memories are learned and stabilized in recurrent spiking neural networks.
 
 CV
 ======
@@ -21,7 +21,8 @@ View my academic and research CV [here](/pdfs/Arshia_Razavi_CV.pdf).
 Education
 ======
 
-* M.Sc. in Physics, [University of Calgary](https://www.ucalgary.ca), 2022-Present
+* M.Sc. in Physics, [University of Calgary](https://www.ucalgary.ca), 2022-2026  
+  Thesis: [*Learning and Stabilizing Memories in Recurrent Spiking Neural Networks*](/publication/2026-07-06-msc-thesis)
 * B.Sc. in Physics, [Sharif University of Technology](https://en.sharif.edu), 2017-2022
 
 Skills
