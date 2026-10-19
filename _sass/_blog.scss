@@ -1,0 +1,270 @@
+/* ==========================================================================
+   BLOG: post cards, post byline, content images, tags, share links
+   ========================================================================== */
+
+$card-radius: 0.5rem;
+$pill-radius: 999px;
+
+
+/*
+   Post cards (archive lists: /year-archive/, /tags/, /categories/)
+   ========================================================================== */
+
+.archive__item--card {
+  margin: 1.25em 0;
+  padding: 1rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $card-radius;
+  -webkit-transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--color-border-strong);
+    box-shadow: 0 2px 12px var(--color-shadow);
+
+    .archive__item-teaser {
+      box-shadow: none;
+    }
+  }
+
+  .archive__item-teaser {
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: calc(#{$card-radius} - 0.25rem);
+    background-color: var(--color-bg-alt);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+  }
+
+  .archive__item-title {
+    margin-top: 0;
+    margin-bottom: 0.35em;
+    line-height: 1.25;
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .archive__item-excerpt {
+    margin-top: 0.5em;
+    font-size: 0.875rem;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  @include breakpoint($medium) {
+    &.archive__item--has-teaser {
+      display: grid;
+      grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+      grid-gap: 1.25rem;
+      gap: 1.25rem;
+      align-items: start;
+
+      .archive__item-teaser {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.archive__subtitle + .list__item .archive__item--card {
+  margin-top: 1em;
+}
+
+/* the card border already separates items; drop the old hover underline */
+.archive__item--card:hover .archive__item-title {
+  text-decoration: none;
+}
+
+.archive__item-meta {
+  margin: 0;
+}
+
+/* grid cards (related posts) keep the teaser on top */
+.grid__item .archive__item--card {
+  display: block;
+  margin: 0;
+  height: 100%;
+
+  .archive__item-teaser {
+    margin-bottom: 0.75rem;
+  }
+}
+
+
+/*
+   Post byline: date and reading time under the title
+   ========================================================================== */
+
+.page__meta.page__byline,
+.page__meta.archive__item-meta {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+          align-items: center;
+  gap: 0.25em 1.25em;
+}
+
+.page__title + .page__meta.page__byline {
+  margin-top: 0.25em;
+  margin-bottom: 1.5em;
+}
+
+.page__meta-item {
+  white-space: nowrap;
+
+  .fa-fw {
+    margin-right: 0.15em;
+  }
+}
+
+
+/*
+   Content images and figures
+   ========================================================================== */
+
+.page__content {
+  > p > img:not(.align-left):not(.align-right),
+  > p > a > img:not(.align-left):not(.align-right),
+  > img:not(.align-left):not(.align-right) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: $card-radius;
+  }
+
+  figure {
+    -webkit-box-pack: center;
+            justify-content: center;
+
+    img {
+      border-radius: $card-radius;
+    }
+
+    figcaption {
+      width: 100%;
+      margin-top: -0.5em;
+      text-align: center;
+    }
+  }
+
+  /* code blocks: slightly larger text and a scrollbar instead of overflow */
+  div.highlighter-rouge .highlight,
+  figure.highlight pre {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+}
+
+
+/*
+   Tags and categories as pills
+   ========================================================================== */
+
+.page__taxonomy {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+          align-items: center;
+  gap: 0.5em;
+
+  strong {
+    margin-right: 0.25em;
+  }
+
+  [itemprop="keywords"] {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+}
+
+.page__meta a.page__taxonomy-item,
+.page__taxonomy-item {
+  display: inline-block;
+  margin: 0;
+  padding: 0.3em 0.85em;
+  color: var(--color-accent);
+  line-height: 1.4;
+  text-decoration: none;
+  background-color: var(--color-accent-soft);
+  border: 1px solid transparent;
+  border-radius: $pill-radius;
+  -webkit-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--color-on-accent);
+    text-decoration: none;
+    background-color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+
+/*
+   Share links
+   ========================================================================== */
+
+.page__share-links {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.page__share-link {
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+          align-items: center;
+  gap: 0.4em;
+  padding: 0.45em 1em;
+  color: var(--color-text);
+  font-family: $sans-serif;
+  font-size: $type-size-6;
+  font-weight: bold;
+  line-height: 1.2;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid var(--color-border-strong);
+  border-radius: $pill-radius;
+  -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+    border-color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}

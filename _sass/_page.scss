@@ -25,6 +25,7 @@
 
   .page__inner-wrap {
     @include full();
+    max-width: $content-measure;
 
     .page__content,
     .page__meta,
@@ -36,7 +37,8 @@
 
 .page__title {
   margin-top: 0;
-  line-height: 1;
+  font-size: $type-size-2;
+  line-height: 1.15;
 
   & + .page__meta {
     margin-top: -0.5em;
@@ -79,7 +81,7 @@
       text-decoration: underline;
 
       img {
-        box-shadow: 0 0 10px rgba(#000, 0.25);
+        box-shadow: 0 0 10px var(--color-shadow);
       }
     }
   }
@@ -87,7 +89,7 @@
   dt {
     margin-top: 1em;
     font-family: $sans-serif;
-    font-weight: bold;
+    font-weight: $bold-font-weight;
   }
 
   dd {
@@ -227,7 +229,7 @@
 
 .page__meta {
   margin-top: 2em;
-  color: mix(#fff, $gray, 25%);
+  color: $muted-text-color;
   font-family: $sans-serif;
   font-size: $type-size-6;
 
@@ -267,7 +269,7 @@
   margin-bottom: 8px;
   padding: 5px 10px;
   text-decoration: none;
-  border: 1px solid $light-gray;
+  border: 1px solid $border-color;
   border-radius: $border-radius;
 
   &:hover {
@@ -296,7 +298,7 @@
 
 .page__comments-form {
   padding: 1em;
-  background: $lighter-gray;
+  background: var(--color-bg-alt);
   transition: $global-transition;
 
   &.disabled {
